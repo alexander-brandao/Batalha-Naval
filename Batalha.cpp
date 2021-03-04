@@ -11,6 +11,53 @@ void limpaTela() {
 	system("CLS");
 }
 
+//funcao que inicia o tabuleiro
+void iniciaTabuleiro(char tabuleiro[10][10]) {
+
+	// variaveis auxiliares para percorrer linhas e colunas
+	int linha, coluna;
+
+	//(precorrer a matriz) um "for" para linhas e um "for" para colunas
+	for (linha = 0; linha < 10; linha++) {
+		for (coluna = 0; coluna < 10; coluna++) {
+			//inserindo "A" agua em todas as linhas e colunas
+			tabuleiro[linha][coluna] = 'A';
+		}
+	}
+}
+
+// funcao exibe tabuleiro
+void exibeTabuleiro(char tabuleiro[10][10]) {
+	
+	// variaveis auxiliares para percorrer linhas e colunas
+	int linha, coluna;
+	// Exibe o tabuleiro
+	for (linha = 0; linha < 10; linha++) {
+		for (coluna = 0; coluna < 10; coluna++) {
+			//inserindo "A" agua em todas as linhas e colunas
+			cout << " " << tabuleiro[linha][coluna];
+		}
+		cout << "\n";
+	}
+}
+
+// funcao jogo
+void jogo() {
+	
+	// matriz de caractere de 10 linhas e 10 colunas
+	char tabuleiro[10][10];
+	// variaveis auxiliares para percorrer linhas e colunas
+	int linha, coluna;
+
+	// funcao inicia tabuleiro
+	iniciaTabuleiro(tabuleiro);
+
+	// Exibe o tabuleiro
+	exibeTabuleiro(tabuleiro);
+
+}
+
+
 //funcao que inicializa o jogo
 void menuInicial() {
 
@@ -21,7 +68,7 @@ void menuInicial() {
 	while (opcao < 1 || opcao > 3) {
 		limpaTela();
 		// area grafica do menu
-		cout << "Bem vindo ao Jogo";
+		cout << "Bem vindo ao Jogo Batalha Naval";
 		cout << "\n 1 - Jogar";
 		cout << "\n 2 - Sobre";
 		cout << "\n 3 - Sair";
@@ -34,7 +81,7 @@ void menuInicial() {
 		{
 
 		case 1:
-
+			jogo();
 			break;
 		case 2:
 			cout << "Informacoes do jogo";
@@ -54,7 +101,6 @@ void menuInicial() {
 int main() {
 	
 	menuInicial();
-	
 
 	return 0;
 }
