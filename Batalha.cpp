@@ -12,7 +12,7 @@ void limpaTela() {
 }
 
 //funcao que inicia o tabuleiro
-void iniciaTabuleiro(char tabuleiro[10][10]) {
+void iniciaTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 
 	// variaveis auxiliares para percorrer linhas e colunas
 	int linha, coluna;
@@ -22,12 +22,13 @@ void iniciaTabuleiro(char tabuleiro[10][10]) {
 		for (coluna = 0; coluna < 10; coluna++) {
 			//inserindo "A" agua em todas as linhas e colunas
 			tabuleiro[linha][coluna] = 'A';
+			mascara[linha][coluna] = '*';
 		}
 	}
 }
 
 // funcao exibe tabuleiro
-void exibeTabuleiro(char tabuleiro[10][10]) {
+void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 	
 	// variaveis auxiliares para percorrer linhas e colunas
 	int linha, coluna;
@@ -35,7 +36,8 @@ void exibeTabuleiro(char tabuleiro[10][10]) {
 	for (linha = 0; linha < 10; linha++) {
 		for (coluna = 0; coluna < 10; coluna++) {
 			//inserindo "A" agua em todas as linhas e colunas
-			cout << " " << tabuleiro[linha][coluna];
+			// cout << " " << tabuleiro[linha][coluna];
+			cout << " " << mascara[linha][coluna];
 		}
 		cout << "\n";
 	}
@@ -44,16 +46,34 @@ void exibeTabuleiro(char tabuleiro[10][10]) {
 // funcao jogo
 void jogo() {
 	
-	// matriz de caractere de 10 linhas e 10 colunas
-	char tabuleiro[10][10];
+	// 2 matrizes de caracteres de 10 linhas e 10 colunas, uma para a resposta e outra para a mascara
+	char tabuleiro[10][10], mascara[10][10];
+
 	// variaveis auxiliares para percorrer linhas e colunas
 	int linha, coluna;
 
-	// funcao inicia tabuleiro
-	iniciaTabuleiro(tabuleiro);
+	// variaveis auxiliares para encontrar a escolha do jogador
+	int linhaJogada, colunaJogada;
 
-	// Exibe o tabuleiro
-	exibeTabuleiro(tabuleiro);
+	// variavel auxiliar para estado de jogo, estado = 1 jogo acontecendo, estado = 0 fim de jogo
+	int estadoDeJogo = 1;
+	// funcao inicia tabuleiro
+	iniciaTabuleiro(tabuleiro, mascara);
+
+	while (estadoDeJogo = 1) {
+		limpaTela();
+		
+		// Exibe o tabuleiro
+		exibeTabuleiro(tabuleiro, mascara);
+
+		cout << "\nDigite uma linha: ";
+		cin >> linhaJogada;
+		cout << "\nDigite uma coluna: ";
+		cin >> colunaJogada;
+
+		// revela o que esta no tabuleiro
+		mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
+	}
 
 }
 
